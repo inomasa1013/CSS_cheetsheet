@@ -1,26 +1,63 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, createContext, useContext } from "react";
 
-function App() {
+/**
+ * Description placeholder
+ * 大元となるコンテキスト、string型の配列
+ * @type {*}
+ */
+const masterContext = createContext<string[]>([]);
+
+// App-----
+const App: React.FC = () => {
+  const [elements, setElements] = useState<string[]>([]);
+
+  const addElements = (): void => {
+    const newElement: string = "i am new ele";
+    setElements([...elements, newElement]);
+  };
+
+  const deleteElement = (index: number): void => {
+    const updatedElements: string[] = [...elements];
+    updatedElements.splice(index, 1);
+    setElements(updatedElements);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={addElements}>Add Element</button>
+      <masterContext.Provider value={elements}>
+        <CreateCard elements={elements} onDelete={deleteElement} />
+      </masterContext.Provider>
     </div>
   );
+};
+// App~~~~~
+// CreateCard-----
+interface CreateCardProps {
+  elements: string[];
+  onDelete: (index: number) => void;
 }
 
+/**
+ * Description placeholder
+ * Appによって生成された削除ボタン付きのcard
+ * @param {{ elements: any; onDelete: any; }} { elements, onDelete }
+ * @returns {Element}
+ */
+const CreateCard: React.FC<CreateCardProps> = ({ elements, onDelete }) => {
+  const childContext = useContext(masterContext);
+  console.log(childContext);
+  return (
+    <div>
+      {elements.map((element: any, index: number) => (
+        <div key={index}>
+          {element}
+          <button onClick={() => onDelete(index)}>Delete</button>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// CreateCard~~~~~
 export default App;
