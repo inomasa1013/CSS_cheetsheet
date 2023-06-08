@@ -10,7 +10,7 @@ const addButton: React.FC<props> = ({ domdom }) => {
   const createCard = <div>YaY</div>;
 
   useEffect(() => {
-    console.log({ domdom });
+    console.log(domdom);
   });
 
   return <button>add new CSS !!</button>;

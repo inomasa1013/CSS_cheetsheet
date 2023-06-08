@@ -9,6 +9,6 @@ var router = express.Router();
 //   res.sendFile(path.join("__dirName", "../build/index.html"));
 // });
 router.get("/", (req: Request, res: Response) => {
-  res.send("inoino");
+  res.sendFile(path.join(__dirname, "../../../../front/build/index.html"));
 });
 export default router;

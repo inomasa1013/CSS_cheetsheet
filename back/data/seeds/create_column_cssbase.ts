@@ -2,10 +2,14 @@ import { Knex } from "knex";
 
 export async function seed(knex: Knex): Promise<void> {
   // Deletes ALL existing entries
-  await knex("cssEffect").del();
+  await knex("csseffect").del();
 
   // Inserts seed entries
-  await knex("cssEffect").insert([
-    { title: "rowValue1", explain: "", code: "" },
+  await knex("csseffect").insert([
+    {
+      title: "hover",
+      explain: "card on mouse",
+      code: "sub:hover { color: orange; }",
+    },
   ]);
 }

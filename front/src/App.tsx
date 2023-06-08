@@ -10,6 +10,7 @@ const masterContext = createContext<string[]>([]);
 // App-----
 const App: React.FC = () => {
   const [elements, setElements] = useState<string[]>([]);
+  const [database, SetDatabase] = useState<object[] | void>();
 
   const addElements = (): void => {
     const newElement: string = "i am new ele";
