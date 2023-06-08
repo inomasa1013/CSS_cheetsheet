@@ -11,12 +11,12 @@ export default {
     migrations: {
       extension: "ts",
       directory: "./migrations",
-      tablename: "cssEffect",
+      tablename: "csseffect",
     },
     seed: {
       extension: "ts",
       directory: "./seeds",
-      tablename: "cssEffect",
+      tablename: "csseffect",
     },
   },
   production: {

@@ -1,4 +1,5 @@
 import React, { useState, createContext, useContext } from "react";
+import { JsxElement } from "typescript";
 
 /**
  * Description placeholder
@@ -24,11 +25,14 @@ const App: React.FC = () => {
   };
 
   return (
-    <div>
-      <button onClick={addElements}>Add Element</button>
-      <masterContext.Provider value={elements}>
-        <CreateCard elements={elements} onDelete={deleteElement} />
-      </masterContext.Provider>
+    <div className="wrapper">
+      <section className="container">
+        <header>plz your favorite CSS :| </header>
+        <button onClick={addElements}>Add CSS Card!</button>
+        <masterContext.Provider value={elements}>
+          <CreateCard elements={elements} onDelete={deleteElement} />
+        </masterContext.Provider>
+      </section>
     </div>
   );
 };
