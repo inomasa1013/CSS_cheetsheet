@@ -1,4 +1,6 @@
-import React, { useState, createContext, useContext } from "react";
+import "./styles/style.scss";
+
+import React, { useState, createContext, useContext, useEffect } from "react";
 import { JsxElement } from "typescript";
 
 /**
@@ -8,8 +10,14 @@ import { JsxElement } from "typescript";
  */
 const masterContext = createContext<string[]>([]);
 
-// App-----
-const App: React.FC = () => {
+// REVIEW App-----
+const App: React.FC = async () => {
+  const allCss = useEffect(() => {
+    (async () => {
+      await fetch("/api/data", { method: " GET" });
+    })();
+  }, []);
+
   const [elements, setElements] = useState<string[]>([]);
   const [database, SetDatabase] = useState<object[] | void>();
 
@@ -28,7 +36,9 @@ const App: React.FC = () => {
     <div className="wrapper">
       <section className="container">
         <header>plz your favorite CSS :| </header>
-        <button onClick={addElements}>Add CSS Card!</button>
+        <button className="createCard" onClick={addElements}>
+          Add CSS Card!
+        </button>
         <masterContext.Provider value={elements}>
           <CreateCard elements={elements} onDelete={deleteElement} />
         </masterContext.Provider>
@@ -37,12 +47,11 @@ const App: React.FC = () => {
   );
 };
 // App~~~~~
-// CreateCard-----
+// REVIEW CreateCard-----
 interface CreateCardProps {
   elements: string[];
   onDelete: (index: number) => void;
 }
-
 /**
  * Description placeholder
  * Appによって生成された削除ボタン付きのcard
@@ -53,7 +62,7 @@ const CreateCard: React.FC<CreateCardProps> = ({ elements, onDelete }) => {
   const childContext = useContext(masterContext);
   console.log(childContext);
   return (
-    <div>
+    <div className="card">
       {elements.map((element: any, index: number) => (
         <div key={index}>
           {element}
