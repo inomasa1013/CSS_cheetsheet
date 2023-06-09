@@ -15,7 +15,7 @@ const server = () => {
   // });
 
   router.get("/api/data", async (req: Request, res: Response) => {
-    res.status(200).json(await models.getAll());
+    res.status(200).send(await models.getAll());
   });
   return router;
 };

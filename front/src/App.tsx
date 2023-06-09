@@ -11,18 +11,30 @@ import { JsxElement } from "typescript";
 const masterContext = createContext<string[]>([]);
 
 // REVIEW App-----
-const App: React.FC = async () => {
-  const allCss = useEffect(() => {
+const App: () => JSX.Element = () => {
+  const [elements, setElements] = useState<string[]>([]);
+  const [database, SetDatabase] = useState<any>();
+
+  useEffect(() => {
     (async () => {
-      await fetch("/api/data", { method: " GET" });
+      const data: any = await fetch("/api/data").then((data) => data.json());
+      SetDatabase(data[0]);
     })();
   }, []);
+  console.log(database);
 
-  const [elements, setElements] = useState<string[]>([]);
-  const [database, SetDatabase] = useState<object[] | void>();
-
+  /**
+   * Description placeholder
+   * @function
+   * エレメントを作成して 変数elementsにセットする
+   */
   const addElements = (): void => {
-    const newElement: string = "i am new ele";
+    const newElement: any = (
+      <div>
+        <p>{database.title}</p>
+        <p>{database.code}</p>
+      </div>
+    );
     setElements([...elements, newElement]);
   };
 
