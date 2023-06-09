@@ -27,16 +27,39 @@ $ npm install
 
 ### 使い方ッ !!
 
--back フォルダにディレクトリを移動してね！
--"npm start " してね！
-
-```shell
-  $ npm run start
-```
+**back フォルダにディレクトリを移動してね！**
 
 ```
-  App
-    Navbar
-      Upload
-    AllPhotos/SinglePhoto
+$ cd back
 ```
+
+_npm start でサーバー起動してね！_
+
+```
+$ npm start
+```
+
+---
+
+---
+
+- chrome で
+- 画面を
+- 開く
+
+---
+
+1. クリエイト
+1. カードを
+1. 押
+1. してね
+
+---
+
+> delete
+
+~~ボタンで~~
+
+| カ  |  ー | ド  |  を |
+| :-- | --: | :-- | --: |
+| け  |  せ | る  |  よ |
