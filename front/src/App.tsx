@@ -1,7 +1,6 @@
 import "./styles/style.scss";
 
 import React, { useState, createContext, useContext, useEffect } from "react";
-import { JsxElement } from "typescript";
 
 /**
  * Description placeholder
